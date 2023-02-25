@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Card(props) {
    return (
       <div>
@@ -5,7 +7,9 @@ export default function Card(props) {
          <h2>{props.name}</h2>
          <h2>{props.species}</h2>
          <h2>{props.gender}</h2>
-         <img  src={props.image} alt="" />
+         <Link to={`/detail/${props.id}`}>
+            <img src={props.image} alt={`Imagen de ${props.name}`} />
+         </Link>
       </div>
    );
 }

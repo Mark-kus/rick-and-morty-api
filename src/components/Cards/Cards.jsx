@@ -1,7 +1,8 @@
-// import Card from './Card';
+import Card from '../Card/Card';
 
 export default function Cards(props) {
    const { characters } = props;
+   console.log(characters)
    return (
       <div>
          {characters.map(element =>
@@ -11,6 +12,7 @@ export default function Cards(props) {
                   species={element.species}
                   gender={element.gender}
                   image={element.image}
+                  onClose={element.onClose}
                />
             </li>)}
       </div>
