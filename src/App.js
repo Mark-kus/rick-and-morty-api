@@ -7,33 +7,40 @@ import { Routes, Route, useParams, useLocation, useNavigate } from 'react-router
 import Form from './components/Form/Form';
 
 export default function App() {
-  const [characters, setCharacters] = useState();
+  const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
-
-  // simulacion de seguridad
-  const [access, setAccess] = useState(false);
-  const username = 'tignanellimarco@gmail.com';
-  const password = 'alphabeta';
-  function login(userData) {
-    if (userData.password === password && userData.username === username) {
-       setAccess(true);
-       navigate('/home');
-    }
- }
- useEffect(() => {
-  !access && navigate('/');
-}, [access]);
- // fin de simulacion
-
   const { id } = useParams();
   const location = useLocation();
 
-  const onSearch = (character) => {
-    fetch(`${process.env.REACT_APP_URL_BASE}/character/${character}?key=${process.env.REACT_APP_API_KEY}`)
+  // simulacion de seguridad
+
+  // const [access, setAccess] = useState(false);
+  // const username = 'tignanellimarco@gmail.com';
+  // const password = 'alphabeta';
+  // function login(userData) {
+  //   if (userData.password === password && userData.username === username) {
+  //     setAccess(true);
+  //     navigate('/home');
+  //   }
+  // }
+  // useEffect(() => {
+  //   access && navigate('/');
+  // }, [access]);
+
+  // !access && para continuar simulacion
+  // fin de simulacion
+
+
+  const onSearch = ({ id }) => {
+    fetch(`${process.env.REACT_APP_URL_BASE}/character/${id}?key=${process.env.REACT_APP_API_KEY}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
+          
+          setCharacters([
+            ...characters,
+            data
+          ]);
         } else {
           window.alert('No hay personajes con ese ID');
         }
@@ -49,17 +56,14 @@ export default function App() {
   }
 
   return (
-    <div className='App' style={{ padding: '25px' }}>
+    <div className='App'>
       {location.pathname !== '/' ? <NavBar onSearch={onSearch} /> : ''}
       <div>
         <Routes>
-          <Route path='/home' element={<Cards
-            characters={characters}
-            onClose={onClose}
-          />} />
+          <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
           <Route path='/about' element={<About />} />
           <Route path={`/detail/${id}`} element={<About />} />
-          <Route path={`/`} element={<Form login={login} />} />
+          {/* <Route path={`/`} element={<Form login={login} />} /> */}
         </Routes>
       </div>
       <hr />

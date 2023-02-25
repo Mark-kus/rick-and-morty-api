@@ -2,10 +2,10 @@ import Card from '../Card/Card';
 
 export default function Cards(props) {
    const { characters } = props;
-   console.log(characters)
+   // console.log(props)
    return (
       <div>
-         {characters.map(element =>
+         {characters ? characters.map(element =>
             <li key={element.id}>
                <Card
                   name={element.name}
@@ -14,7 +14,7 @@ export default function Cards(props) {
                   image={element.image}
                   onClose={element.onClose}
                />
-            </li>)}
+            </li>) : 'No hay personajes guardados'}
       </div>
    )
 }

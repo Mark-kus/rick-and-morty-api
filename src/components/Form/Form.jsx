@@ -13,17 +13,18 @@ export default function Form(props) {
         });
     }
 
-    const handleSubmit = () => {
-        props.login(userData);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // props.login(userData);
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="username"></label>
-            <input value={userData.username} onChange={handleInputChange} type="text" name="username" />
+            <input autoComplete="on" value={userData.username} onChange={handleInputChange} type="text" name="username" />
             <label htmlFor="password"></label>
-            <input value={userData.password} onChange={handleInputChange} type="password" name="password" />
-            <button></button>
+            <input autoComplete="on" value={userData.password} onChange={handleInputChange} type="password" name="password" />
+            <button>Enviar</button>
         </form>
     )
 }
