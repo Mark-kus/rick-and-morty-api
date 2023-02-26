@@ -1,20 +1,17 @@
 import Card from '../Card/Card';
+import styles from './Cards.module.css'
 
 export default function Cards(props) {
    const { characters } = props;
-   // console.log(props)
    return (
-      <div>
-         {characters ? characters.map(element =>
-            <li key={element.id}>
+      <div className={styles.cards}>
+         {characters.length ? characters.map(element =>
+            <div key={element.id}>
                <Card
-                  name={element.name}
-                  species={element.species}
-                  gender={element.gender}
-                  image={element.image}
-                  onClose={element.onClose}
+                  characters={element}
+                  onClose={props.onClose}
                />
-            </li>) : 'No hay personajes guardados'}
+            </div>) : 'No hay personajes guardados'}
       </div>
    )
 }

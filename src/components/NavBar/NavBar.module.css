@@ -1,0 +1,29 @@
+#navBar {
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: greenyellow;
+    border-radius: 10px;
+    margin-right: 20px;
+    height: 20vw;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#random {
+    margin: 15px;
+}
+
+.navLinks {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: aliceblue;
+}
+
+.searchBar {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

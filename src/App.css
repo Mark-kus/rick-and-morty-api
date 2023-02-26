@@ -1,4 +1,6 @@
 .App {
-   text-align: center;
-   padding: 25px
+   margin-top: 5%;
+   width: 100vw;
+   display: grid;
+   grid-template: 100% / 80px 1fr 3fr 80px;
 }

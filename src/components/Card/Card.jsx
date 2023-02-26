@@ -1,15 +1,22 @@
 import { Link } from "react-router-dom";
+import styles from './Card.module.css'
 
 export default function Card(props) {
+   const { characters } = props;
    return (
-      <div>
-         <button onClick={props.onClose}>X</button>
-         <h2>{props.name}</h2>
-         <h2>{props.species}</h2>
-         <h2>{props.gender}</h2>
-         <Link to={`/detail/${props.id}`}>
-            <img src={props.image} alt={`Imagen de ${props.name}`} />
+      <div className={styles.card} >
+         <button className={styles.closeButton} onClick={() => { props.onClose(characters.id) }}><strong>X</strong></button>
+         <div className={styles.topData}>
+            <h3>{characters.name}</h3>
+            <h4>{characters.status}</h4>
+         </div>
+         <Link to={`/detail/${characters.id}`}>
+            <img className={styles.charImg} src={characters.image} alt={`Imagen de ${characters.name}`} />
          </Link>
+         <div className={styles.bottomData}>
+            <h4>{characters.species}</h4>
+            <h4>{characters.gender}</h4>
+         </div>
       </div>
    );
 }

@@ -1,25 +1,16 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Detail() {
+export default function Detail(props) {
+    const { characters } = props;
     const { id } = useParams();
-    const [character, setCharacter] = useState();
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_URL_BASE}/character/${id}?key=${process.env.REACT_APP_API_KEY}`)
-            .then((response) => response.json())
-            .then((char) => {
-                if (char.name) {
-                    setCharacter(char);
-                } else {
-                    window.alert("No hay personajes con ese ID");
-                }
-            })
-            .catch((err) => {
-                window.alert("No hay personajes con ese ID");
-            });
-        return setCharacter({});
-    }, [id]);
+    const character = characters.filter(elem => elem.id === id)
+
+    return (
+        <div>
+
+        </div>
+    )
 
     // Boton back
     // Name
@@ -28,7 +19,4 @@ export default function Detail() {
     // Gender
     // Origin
     // Image
-
-
-
 }
