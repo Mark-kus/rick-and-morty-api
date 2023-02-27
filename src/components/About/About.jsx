@@ -1,6 +1,8 @@
-export default function About () {
+import styles from './About.module.css'
+
+export default function About() {
     return (
-        <div>
+        <div className={styles.container}>
             Algo que contenga informacion sobre la aplicacion y su autor
         </div>
     )

@@ -5,13 +5,13 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import About from './components/About/About.jsx'
 import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
-import { Routes, Route, useParams, useLocation, useNavigate } from 'react-router-dom';
+import video from './space.mp4';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 // import Form from './components/Form/Form';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
   const navigate = useNavigate();
-  const { id } = useParams();
   const location = useLocation();
   const charactersAmount = 826;
 
@@ -95,12 +95,15 @@ export default function App() {
 
   return (
     <div className='App'>
+      <video id="background-video" loop autoPlay muted>
+        <source src={video} type="video/mp4" />
+      </video>
       {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
       <div className='container'>
         <Routes>
           <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
           <Route path='/about' element={<About />} />
-          <Route path={'/detail/:id'} element={<Detail characters={characters} />} />
+          <Route path='/detail/:id' element={<Detail characters={characters} />} />
           {/* <Route path={`/`} element={<Form login={login} />} /> */}
           <Route path='*' element={<Error />} />
         </Routes>

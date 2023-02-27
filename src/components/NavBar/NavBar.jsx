@@ -6,10 +6,12 @@ export default function NavBar(props) {
     return (
         <div id={styles.navBar}>
             <div className={styles.navLinks}>
-                <span>
-                    </span><NavLink className={styles.navLink} to='/home'>Home</NavLink>
-                <span>
-                    </span><NavLink className={styles.navLink} to='/about'>About</NavLink>
+                <NavLink className={styles.navLinks} to='/home'>
+                    <button className={`${styles.linksHome} ${styles.links}`}>HOME</button>
+                </NavLink>
+                <NavLink className={styles.navLinks} to='/about'>
+                    <button className={`${styles.linksAbout} ${styles.links}`}>ABOUT</button>
+                </NavLink>
             </div>
             <div className={styles.searchBar}>
                 <SearchBar onSearch={props.onSearch} />
