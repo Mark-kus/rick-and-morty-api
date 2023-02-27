@@ -5,32 +5,33 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import About from './components/About/About.jsx'
 import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
+import Form from './components/Form/Form';
 import video from './space.mp4';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-// import Form from './components/Form/Form';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
-  const navigate = useNavigate();
   const location = useLocation();
   const charactersAmount = 826;
-
+  
   // simulacion de seguridad
+  
+  const [access, setAccess] = useState(false);
+  const username = 'tignanellimarco@gmail.com';
+  const password = 'alphabeta';
+  const navigate = useNavigate();
 
-  // const [access, setAccess] = useState(false);
-  // const username = 'tignanellimarco@gmail.com';
-  // const password = 'alphabeta';
-  // function login(userData) {
-  //   if (userData.password === password && userData.username === username) {
-  //     setAccess(true);
-  //     navigate('/home');
-  //   }
-  // }
-  // useEffect(() => {
-  //   access && navigate('/');
-  // }, [access]);
+  const login = (userData) => {
+    if (userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate('/home');
+    }
+  }
 
-  // !access && para continuar simulacion
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
+
   // fin de simulacion
 
 
@@ -104,7 +105,7 @@ export default function App() {
           <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
           <Route path='/about' element={<About />} />
           <Route path='/detail/:id' element={<Detail characters={characters} />} />
-          {/* <Route path={`/`} element={<Form login={login} />} /> */}
+          <Route exact path='/' element={<Form login={login} />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </div>
