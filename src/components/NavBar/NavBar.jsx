@@ -12,6 +12,9 @@ export default function NavBar(props) {
                 <NavLink className={styles.navLinks} to='/about'>
                     <button className={`${styles.linksAbout} ${styles.links}`}>ABOUT</button>
                 </NavLink>
+                <NavLink className={styles.navLinks} to='/favorites'>
+                    <button className={`${styles.linksFavorites} ${styles.links}`}>FAVORITES</button>
+                </NavLink>
             </div>
             <div className={styles.searchBar}>
                 <SearchBar onSearch={props.onSearch} />

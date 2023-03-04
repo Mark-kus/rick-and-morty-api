@@ -8,7 +8,7 @@ export default function Cards(props) {
          {characters.length ? characters.map(element =>
             <div key={element.id}>
                <Card
-                  characters={element}
+                  character={element}
                   onClose={props.onClose}
                />
             </div>) : 'No hay personajes guardados'}

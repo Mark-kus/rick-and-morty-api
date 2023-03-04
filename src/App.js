@@ -8,10 +8,12 @@ import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form';
 import video from './space.mp4';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
   const location = useLocation();
+  const myFavorites = useSelector(state => state.myFavorites)
   const charactersAmount = 826;
   
   // simulacion de seguridad
@@ -29,9 +31,10 @@ export default function App() {
   }
 
   useEffect(() => {
-    !access && navigate('/');
+    access && navigate('/');
   }, [access]);
 
+  // !access para simular, access para no
   // fin de simulacion
 
 
@@ -104,6 +107,7 @@ export default function App() {
         <Routes>
           <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
           <Route path='/about' element={<About />} />
+          <Route path='/favorites' element={<Cards characters={myFavorites} />} />
           <Route path='/detail/:id' element={<Detail characters={characters} />} />
           <Route exact path='/' element={<Form login={login} />} />
           <Route path='*' element={<Error />} />
