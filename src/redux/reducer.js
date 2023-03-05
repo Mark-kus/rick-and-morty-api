@@ -14,8 +14,8 @@ const reducer = (state = initialState, action) => {
             newFavs.push(action.payload);
             return {
                 ...state,
-                myFavorites: state.allCharacters,
                 allCharacters: newFavs,
+                myFavorites: newFavs,
             }
 
         // all fine
@@ -28,26 +28,33 @@ const reducer = (state = initialState, action) => {
         //     }
 
         case DELETE_FAVORITE:
+            const delFav = state.myFavorites.filter(el => el.id !== action.payload);
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter(el => el.id !== action.payload),
+                allCharacters: delFav,
+                myFavorites: delFav,
             }
 
         // ORDER y FILTER, casos after all fine
 
         case ORDER:
+            let order = state.myFavorites
             if (action.payload === 'Ascendente') {
-                state.allCharacters.sort((a, b) => a.id < b.id)
+                order = state.myFavorites.sort((a, b) => a.id > b.id)
             }
             if (action.payload === 'Descendente') {
-                state.allCharacters.sort((a, b) => a.id > b.id)
+                order = state.myFavorites.sort((a, b) => a.id < b.id)
             }
             return {
                 ...state,
-                myFavorites: state.allCharacters,
+                myFavorites: order,
             }
 
         case FILTER:
+            if (action.payload === 'none') return {
+                 ...state,
+                 myFavorites: state.allCharacters
+                }
             return {
                 ...state,
                 myFavorites: state.allCharacters.filter(el => el.gender === action.payload)

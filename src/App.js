@@ -6,7 +6,7 @@ import About from './components/About/About.jsx'
 import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form';
-import video from './space.mp4';
+import video from './backgroundDesktop.mp4';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 

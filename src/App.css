@@ -4,9 +4,8 @@
    grid-template: 100% / 80px 1fr 3fr 80px;
 }
 #background-video{
-   height: 56.3vw;
-   width: 100%;
    z-index: -1;
    top: 0;
+   width: 100%;
    position: fixed; /* optional depending on what you want to do in your app */
    }

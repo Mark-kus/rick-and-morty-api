@@ -37,10 +37,11 @@ export default function NavBar(props) {
                     </select>
 
                     <select name="filter" onChange={handleFilter} >
+                        <option value="none">No filter</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Genderless">Genderless</option>
-                        <option value="Unknown">Unknown</option>
+                        <option value="unknown">Unknown</option>
                     </select>
                 </div>
                 : <div className={styles.searchBar}>
