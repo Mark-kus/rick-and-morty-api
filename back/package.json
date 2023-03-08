@@ -1,0 +1,14 @@
+{
+  "name": "rick_and_morty_backend",
+  "version": "1.0.0",
+  "description": "The backend development of the Henry project, based on the adultswim show, Rick and Morty",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodemon src/server.js"
+  },
+  "author": "Marco Tignanelli",
+  "license": "ISC"
+}
