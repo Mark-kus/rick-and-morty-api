@@ -19,18 +19,21 @@ export default function NavBar(props) {
     return (
         <div id={styles.navBar}>
             <div className={styles.navLinks}>
-                <NavLink className={styles.navLinks} to='/home'>
+
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/home'>
                     <button className={`${styles.linksHome} ${styles.links}`}>HOME</button>
                 </NavLink>
-                <NavLink className={styles.navLinks} to='/about'>
+
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/about'>
                     <button className={`${styles.linksAbout} ${styles.links}`}>ABOUT</button>
                 </NavLink>
-                <NavLink className={styles.navLinks} to='/favorites'>
+
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/favorites'>
                     <button className={`${styles.linksFavorites} ${styles.links}`}>FAVORITES</button>
                 </NavLink>
             </div>
             {location.pathname === '/favorites' ?
-                <div>
+                <div className={styles.orderBar}>
                     <select name="order" onChange={handleOrder} >
                         <option value="Ascendente">Ascendente</option>
                         <option value="Descendente">Descendente</option>
@@ -46,7 +49,7 @@ export default function NavBar(props) {
                 </div>
                 : <div className={styles.searchBar}>
                     <SearchBar onSearch={props.onSearch} />
-                    <button id={styles.random} onClick={props.onSearchRandom}>Randomize</button>
+                    <button id={styles.random} onClick={props.onSearchRandom}>🎲 Randomize</button>
                 </div>}
         </div>
     )

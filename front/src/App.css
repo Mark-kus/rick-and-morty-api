@@ -1,5 +1,5 @@
 .App {
-   margin: 2% 0;
+   margin-bottom: 2%;
    display: grid;
    grid-template: 100% / 80px 1fr 3fr 80px;
 }
@@ -9,3 +9,12 @@
    width: 100%;
    position: fixed; /* optional depending on what you want to do in your app */
    }
+
+.img {
+   width: 15%;
+   margin: 8px;
+}
+
+.titleImg {
+   width: 100%;
+}

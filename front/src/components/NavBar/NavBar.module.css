@@ -11,38 +11,40 @@
     grid-column-start: 2;
 }
 
-#random {
+#random img {
     margin: 15px;
 }
 
-.navLinks {
+.navLinks, .active {
     text-decoration: none;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.linksHome {
-    color:white;
-    padding: 8px;
-    border-top-left-radius: 8px;
-    background-color: rgba(9, 15, 41, 1);
-    border: none;
-    border-bottom: solid 2px rgba(0, 0, 0, 0.5);
-    border-right: solid 1px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    transition: background 300ms ease;
+.active .links {
+    background: linear-gradient(180deg, rgba(9, 15, 41, 1), rgba(9, 15, 41, 0), rgba(9, 15, 41, 1));
 }
-.linksAbout {
-    color:white;
+
+.links {
+    width: 100%;
     padding: 8px;
-    border-top-right-radius: 8px;
     background-color: rgba(9, 15, 41, 1);
     border: none;
+    color:white;
     border-bottom: solid 2px rgba(0, 0, 0, 0.5);
-    border-left: solid 1px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    transition: background 200ms ease;
+    transition: background 300ms ease;
+
+}
+
+.linksHome {
+    border-top-left-radius: 8px;
+    border-right: solid 2px rgb(41, 41, 41);
+}
+
+.linksFavorites {
+    border-left: solid 2px rgb(41, 41, 41);
+    border-top-right-radius: 8px;
 }
 
 .links:hover {
@@ -53,7 +55,7 @@
     background: rgb(60, 92, 12);
 }
 
-.searchBar {
+.searchBar, .orderBar {
     padding: 10px;
     display: flex;
     flex-direction: column;

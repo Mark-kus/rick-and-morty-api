@@ -2,22 +2,26 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
+import Footer from './components/Footer/Footer.jsx'
 import About from './components/About/About.jsx'
 import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form';
 import video from './backgroundDesktop.mp4';
+import title from './title.png';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFav, updateAll } from './redux/actions';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
+  const dispatch = useDispatch();
   const location = useLocation();
   const myFavorites = useSelector(state => state.myFavorites)
   const charactersAmount = 826;
-  
+
   // simulacion de seguridad
-  
+
   const [access, setAccess] = useState(false);
   const username = 'tignanellimarco@gmail.com';
   const password = 'alphabeta';
@@ -37,13 +41,19 @@ export default function App() {
   // !access para simular, access para no
   // fin de simulacion
 
+  //En el componente Detail donde llamamos a la API de Rick & Morty en la ruta https://rickandmortyapi.com/api/character/ cámbiala por la ruta que creamos en el back: http://localhost:3001/rickandmorty/detail
+
+  //En la action para agregar favorito, ahora debes enviar los personajes al endpoint http://localhost:3001/rickandmorty/fav con el método post.
+
+  //En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint http://localhost:3001/rickandmorty/fav con el método delete.
 
   const onSearch = ({ id }) => {
     if (characters.length === charactersAmount) {
       alert('No hay más cartas que añadir');
       return null;
     }
-    fetch(`${process.env.REACT_APP_URL_BASE}/character/${id}?key=${process.env.REACT_APP_API_KEY}`)
+    // fetch(`${process.env.REACT_APP_URL_BASE}/character/${id}?key=${process.env.REACT_APP_API_KEY}`)
+      fetch(`http://localhost:3001/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
@@ -95,24 +105,31 @@ export default function App() {
     setCharacters([
       ...newCharacters
     ]);
+    dispatch(deleteFav(idCharacter));
   }
 
   return (
-    <div className='App'>
-      <video id="background-video" loop autoPlay muted>
-        <source src={video} type="video/mp4" />
-      </video>
-      {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
-      <div className='container'>
-        <Routes>
-          <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/favorites' element={<Cards characters={myFavorites} />} />
-          <Route path='/detail/:id' element={<Detail characters={characters} />} />
-          <Route exact path='/' element={<Form login={login} />} />
-          <Route path='*' element={<Error />} />
-        </Routes>
+    <div>
+      <div className='img'>
+        <img className='titleImg' src={title} alt='Rick and Morty title' />
       </div>
+      <div className='App'>
+        <video id="background-video" loop autoPlay muted>
+          <source src={video} type="video/mp4" />
+        </video>
+        {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
+        <div className='container'>
+          <Routes>
+            <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/favorites' element={<Cards characters={myFavorites} />} />
+            <Route path='/detail/:id' element={<Detail characters={characters} setCharacters={setCharacters} />} />
+            <Route exact path='/' element={<Form login={login} />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
+        </div>
+      </div>
+        <Footer />
     </div>
   )
 }

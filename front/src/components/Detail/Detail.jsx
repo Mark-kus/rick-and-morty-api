@@ -7,9 +7,11 @@ export default function Detail(props) {
     const { id } = useParams();
     const [first, setFirst] = useState()
     const [character] = characters.filter((elem) => elem.id === Number(id))
+    const goFetch = character;
 
     useEffect(() => {
-        fetch(`${character.episode[0]}?key=${process.env.REACT_APP_API_KEY}`)
+        fetch(`http://localhost:3001/detail/${goFetch}`)
+        // fetch(`${character.episode[0]}?key=${process.env.REACT_APP_API_KEY}`)
             .then((response) => response.json())
             .then((data) => {
                 setFirst({

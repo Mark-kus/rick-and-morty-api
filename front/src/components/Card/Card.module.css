@@ -1,12 +1,12 @@
+/* Card styles */
+
 .card {
     width: 200px;
     margin: 8px 8px;
-    background-color: rgb(0, 110, 114);
+    background-color: rgba(0, 110, 114, 0);
     border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
     transition: transform 150ms ease-in-out;
-    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.5);
-    height: 310px;
+    box-shadow: 0 0 8px rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
 }
@@ -15,39 +15,71 @@
     transform: scale(1.03);
 }
 
-.closeButton {
+/* Button styles */
+
+.button {
+    font-size: 0%;
     position: absolute;
-    /* display: none; */
-    opacity: 0;
-    transition: opacity .30s ease;
+    visibility: hidden;
     color: whitesmoke;
-    background-color: red;
-    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 0, 0, 0);
     border: none;
-    border-top-left-radius: 8px;
-    /* width: 100%; */
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    margin: 4px;
 }
 
-.card:hover .closeButton {
-    /* display: inline-block; */
-    opacity: 1;
+/* .closeBut {
+} */
+
+.favBut {
+    align-self: flex-end;
+}
+
+.card:hover .button {
+    font-size: 100%;
+    width: 15%;
+    font-size: 20px;
+    visibility: visible;
     cursor: pointer;
 }
 
-.charImg {
+/* Image styles */
+
+.img {
+    top: 10%;
+    position: relative;
     box-sizing: border-box;
-    width: 93%;
-    border: solid rgb(0, 39, 39) 3px;
-    border-radius: 10px;
-    /* center image */
+    width: 90%;
+    box-shadow: 0 6px 16px black;
+    border-radius: 50%;
     display: block;
-    margin: auto;
+    margin: 8px auto 0 auto;
 }
 
-.topData,
-.bottomData {
+/* Data styles */
+
+.data {
     display: flex;
-    justify-content: space-between;
-    margin: 0 5px;
+    flex-direction: column;
     align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    color: mediumvioletred;
+    height: 30%;
+    text-align: center;
+}
+
+.data h4, .data h5 {
+    height: 0;
+}
+
+.subData {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+    bottom: 5px;
 }

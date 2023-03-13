@@ -1,0 +1,35 @@
+.footer {
+    position: absolute;
+    bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+/* LinkedIn styles */
+
+.liBlack {
+    background-color: white;
+    width: 10%;
+    border: 1px solid white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: opacity .30s ease;
+}
+
+.liColor {
+    width: 10%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity .30s ease;
+    position: absolute;
+}
+
+/* LinkedIn animation */
+
+.liAnchor:hover .liColor {
+    opacity: 1;
+}
+.liAnchor:hover .liBlack {
+    opacity: 0;
+}
