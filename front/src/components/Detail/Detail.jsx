@@ -8,6 +8,7 @@ export default function Detail(props) {
     const [first, setFirst] = useState()
     const [character] = characters.filter((elem) => elem.id === Number(id))
     const goFetch = character;
+    console.log(character)
 
     useEffect(() => {
         fetch(`http://localhost:3001/detail/${goFetch}`)

@@ -11,7 +11,7 @@ import video from './backgroundDesktop.mp4';
 import title from './title.png';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFav, updateAll } from './redux/actions';
+import { deleteFav } from './redux/actions';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
@@ -41,18 +41,11 @@ export default function App() {
   // !access para simular, access para no
   // fin de simulacion
 
-  //En el componente Detail donde llamamos a la API de Rick & Morty en la ruta https://rickandmortyapi.com/api/character/ cámbiala por la ruta que creamos en el back: http://localhost:3001/rickandmorty/detail
-
-  //En la action para agregar favorito, ahora debes enviar los personajes al endpoint http://localhost:3001/rickandmorty/fav con el método post.
-
-  //En la action para eliminar favorito, ahora debes enviar el personaje a eliminar al endpoint http://localhost:3001/rickandmorty/fav con el método delete.
-
   const onSearch = ({ id }) => {
     if (characters.length === charactersAmount) {
       alert('No hay más cartas que añadir');
       return null;
     }
-    // fetch(`${process.env.REACT_APP_URL_BASE}/character/${id}?key=${process.env.REACT_APP_API_KEY}`)
       fetch(`http://localhost:3001/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -79,7 +72,7 @@ export default function App() {
             }
           }
         } else {
-          window.alert('No hay personajes con ese ID');
+          onSearchRandom();
         }
       });
   }
@@ -123,7 +116,7 @@ export default function App() {
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
             <Route path='/favorites' element={<Cards characters={myFavorites} />} />
-            <Route path='/detail/:id' element={<Detail characters={characters} setCharacters={setCharacters} />} />
+            <Route path='/detail/:id' element={<Detail characters={characters} />} />
             <Route exact path='/' element={<Form login={login} />} />
             <Route path='*' element={<Error />} />
           </Routes>
