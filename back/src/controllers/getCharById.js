@@ -12,7 +12,10 @@ const getCharById = async (req, res) => {
             name: data.name,
             image: data.image,
             gender: data.gender,
-            species: data.species
+            species: data.species,
+            status: data.status,
+            episode: data.episode,
+            origin: data.origin,
         }
         res.json(character)
     } catch (error) {

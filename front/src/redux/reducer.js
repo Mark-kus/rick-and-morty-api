@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, DELETE_FAVORITE, ORDER, FILTER } from "./types";
+import { ADD_FAVORITE, DELETE_FAVORITE, ORDER, FILTER } from "./actions";
 
 
 const initialState = {
@@ -10,29 +10,26 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_FAVORITE:
-            const newFavs = [...state.allCharacters];
-            newFavs.push(action.payload);
             return {
                 ...state,
-                allCharacters: newFavs,
-                myFavorites: newFavs,
+                allCharacters: action.payload,
+                myFavorites: action.payload,
             }
 
         case DELETE_FAVORITE:
-            const delFav = state.myFavorites.filter(el => el.id !== action.payload);
             return {
                 ...state,
-                allCharacters: delFav,
-                myFavorites: delFav,
+                allCharacters: action.payload,
+                myFavorites: action.payload,
             }
 
         case ORDER:
-            let order = state.myFavorites
+            let order = [...state.myFavorites]
             if (action.payload === 'Ascendente') {
-                order = state.myFavorites.sort((a, b) => a.id > b.id)
+                order.sort((a, b) => a.name.localeCompare(b.name))
             }
             if (action.payload === 'Descendente') {
-                order = state.myFavorites.sort((a, b) => a.id < b.id)
+                order.sort((a, b) => b.name.localeCompare(a.name))
             }
             return {
                 ...state,
@@ -41,9 +38,9 @@ const reducer = (state = initialState, action) => {
 
         case FILTER:
             if (action.payload === 'none') return {
-                 ...state,
-                 myFavorites: state.allCharacters
-                }
+                ...state,
+                myFavorites: state.allCharacters
+            }
             return {
                 ...state,
                 myFavorites: state.allCharacters.filter(el => el.gender === action.payload)

@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const getCharDetail = async (req, res) => {
     const params = req.params;
-    const URL = `${params.id}?key=${process.env.API_KEY}`
+    const URL = `https://be-a-rym.up.railway.app/api/episode/${params.id}?key=${process.env.API_KEY}`
 
     try {
         const response = await axios(URL);

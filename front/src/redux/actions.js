@@ -1,4 +1,9 @@
-import { ADD_FAVORITE, DELETE_FAVORITE, ORDER, FILTER } from "./types";
+import axios from 'axios';
+
+export const ADD_FAVORITE = 'ADD_FAVORITE'
+export const DELETE_FAVORITE = 'DELETE_FAVORITE'
+export const ORDER = 'ORDER'
+export const FILTER = 'FILTER'
 
 // La action addFavorites, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que envíe el personaje favorito al endpoint con el método POST http://localhost:3001/rickandmorty/fav.
 
@@ -7,16 +12,22 @@ import { ADD_FAVORITE, DELETE_FAVORITE, ORDER, FILTER } from "./types";
 // Crea una action getFavorites, debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que solicite el personaje favorito con el método GET al endpoint http://localhost:3001/rickandmorty/fav.
 
 export const addFav = (character) => {
-    return {
-        type: ADD_FAVORITE,
-        payload: character,
+    return async function (dispatch) {
+        const response = await axios.post(`http://localhost:3001/rickandmorty/fav`, character);
+        return dispatch({
+            type: ADD_FAVORITE,
+            payload: response.data,
+        })
     }
 }
 
 export const deleteFav = (id) => {
-    return {
-        type: DELETE_FAVORITE,
-        payload: id,
+    return async function (dispatch) {
+        const response = await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+        return dispatch({
+            type: DELETE_FAVORITE,
+            payload: response.data,
+        })
     }
 }
 

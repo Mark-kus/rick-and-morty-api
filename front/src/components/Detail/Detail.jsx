@@ -5,14 +5,13 @@ import styles from './Detail.module.css';
 export default function Detail(props) {
     const { characters } = props;
     const { id } = useParams();
-    const [first, setFirst] = useState()
-    const [character] = characters.filter((elem) => elem.id === Number(id))
-    const goFetch = character;
-    console.log(character)
+    const [first, setFirst] = useState();
+    const [character] = characters.filter((elem) => elem.id === id);
+    let goFetch = character.episode[0];
+    goFetch = goFetch.replace('https://be-a-rym.up.railway.app/api/episode/', '');
 
     useEffect(() => {
         fetch(`http://localhost:3001/detail/${goFetch}`)
-        // fetch(`${character.episode[0]}?key=${process.env.REACT_APP_API_KEY}`)
             .then((response) => response.json())
             .then((data) => {
                 setFirst({
@@ -39,35 +38,4 @@ export default function Detail(props) {
             </div>
         </div>
     )
-
-    // Boton back
-
-    // Origin
-    // Image
-
-    // type
-    // :
-    // ""
-    // gender
-    // :
-    // "Male"
-
-
-    // location
-    // :
-    // {name: "Citadel of Ricks", url: "http://be-a-rym.up…}
-    // image
-    // :
-    // "https://rickandmortyapi.com/api/character/avatar/480.jpeg"
-
-    // episode
-    // :
-    // ["http://be-a-rym.up.railway.app/api/episode/28"]
-    // url
-    // :
-    // "http://be-a-rym.up.railway.app/api/character/480"
-    // created
-    // :
-    // "Wed Jan 18 2023 18:38:03 GMT+0000 (Coordinated Universal Time)"
-
 }
