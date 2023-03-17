@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-export const ADD_FAVORITE = 'ADD_FAVORITE'
-export const DELETE_FAVORITE = 'DELETE_FAVORITE'
-export const ORDER = 'ORDER'
-export const FILTER = 'FILTER'
+export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';
+export const ORDER = 'ORDER';
+export const FILTER = 'FILTER';
+export const GET_FAVORITES = 'GET_FAVORITES';
 
 // La action addFavorites, ahora debe ser una función asíncrona, promisificada con async/await, manejando errores con try/catch que envíe el personaje favorito al endpoint con el método POST http://localhost:3001/rickandmorty/fav.
 
@@ -18,6 +19,16 @@ export const addFav = (character) => {
             type: ADD_FAVORITE,
             payload: response.data,
         })
+    }
+}
+
+export const getFavs = () => {
+    return async function (dispatch) {
+        const response = await axios(`http://localhost:3001/rickandmorty/fav`);
+        return dispatch({
+            type: GET_FAVORITES,
+            payload: response.data,
+        });
     }
 }
 

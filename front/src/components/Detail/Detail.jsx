@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styles from './Detail.module.css';
 
 export default function Detail(props) {
-    const { characters } = props;
+    const { characters, onSearch } = props;
     const { id } = useParams();
     const [first, setFirst] = useState();
     const [character] = characters.filter((elem) => elem.id === id);

@@ -11,7 +11,7 @@ import video from './backgroundDesktop.mp4';
 import title from './title.png';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFav } from './redux/actions';
+import { deleteFav, getFavs } from './redux/actions';
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
@@ -37,6 +37,9 @@ export default function App() {
   useEffect(() => {
     access && navigate('/');
   }, [access]);
+  useEffect(() => {
+    dispatch(getFavs());
+ }, []);
 
   // !access para simular, access para no
   // fin de simulacion

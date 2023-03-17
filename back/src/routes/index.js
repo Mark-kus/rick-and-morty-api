@@ -10,6 +10,10 @@ router.get('/onsearch/:id', getCharById)
 
 router.get('/detail/:id', getCharDetail)
 
+router.get('/rickandmorty/fav', (req, res) => {
+    res.status(200).json(favs);
+})
+
 router.post('/rickandmorty/fav', (req, res) => {
     const personaje = req.body;
     favs.push(personaje);
