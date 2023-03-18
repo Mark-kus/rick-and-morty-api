@@ -39,7 +39,7 @@ export default function App() {
   }, [access]);
   useEffect(() => {
     dispatch(getFavs());
- }, []);
+  }, []);
 
   // !access para simular, access para no
   // fin de simulacion
@@ -49,7 +49,7 @@ export default function App() {
       alert('No hay más cartas que añadir');
       return null;
     }
-      fetch(`http://localhost:3001/onsearch/${id}`)
+    fetch(`http://localhost:3001/onsearch/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
@@ -105,16 +105,16 @@ export default function App() {
   }
 
   return (
-    <div>
-      <div className='img'>
+    <div className='allContainer'>
+      <div className='imgDiv'>
         <img className='titleImg' src={title} alt='Rick and Morty title' />
       </div>
+      <video id="background-video" loop autoPlay muted>
+        <source src={video} type="video/mp4" />
+      </video>
       <div className='App'>
-        <video id="background-video" loop autoPlay muted>
-          <source src={video} type="video/mp4" />
-        </video>
         {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
-        <div className='container'>
+        <div className='pathContainer'>
           <Routes>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
@@ -125,7 +125,7 @@ export default function App() {
           </Routes>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   )
 }

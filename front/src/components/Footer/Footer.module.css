@@ -4,7 +4,8 @@
     width: 100%;
     border-top: solid rgba(128, 128, 128, 0.15) 1px;
     background-color: black;
-    padding: 8px 0;
+    padding: 8px 0 0 0;
+    align-self: flex-end;
 }
 
 .footer span {
