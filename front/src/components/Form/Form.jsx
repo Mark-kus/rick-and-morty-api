@@ -3,8 +3,8 @@ import styles from './Form.module.css';
 import validation from './validation.js';
 
 export default function Form(props) {
-    const [userData, setUserData] = useState({ username: '', password: '' });
-    const [errors, setErrors] = useState({ username: '', password: '' });
+    const [userData, setUserData] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({ email: '', password: '' });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,15 +27,19 @@ export default function Form(props) {
 
     return (
         <form onSubmit={handleSubmit} className={styles.container}>
-            <label htmlFor="username">Username: </label>
-            <input autoComplete="on" value={userData.username} onChange={handleInputChange} type="text" name="username" />
-            <p className={styles.error}>{errors.username && errors.username}</p>
+
+            <strong>Log In</strong>
+
+            <label htmlFor="email">Email</label>
+            <input placeholder="you@example.com" autoComplete="on" id="email" value={userData.email} onChange={handleInputChange} type="text" name="email" />
+            <p className={styles.error}>{errors.email}</p>
             <br />
-            <label htmlFor="password">Password: </label>
-            <input autoComplete="on" value={userData.password} onChange={handleInputChange} type="password" name="password" />
+
+            <label htmlFor="password">Password</label>
+            <input placeholder="Enter 6 to 10 characters" autoComplete="on" id="password" value={userData.password} onChange={handleInputChange} type="password" name="password" />
             <p className={styles.error}>{errors.password}</p>
-            <hr />
-            <button>Enviar</button>
+
+            <button type="submit">Enviar</button>
         </form>
     )
 }
