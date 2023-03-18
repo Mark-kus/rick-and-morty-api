@@ -25,3 +25,7 @@ body::-webkit-scrollbar-thumb {
   background: greenyellow;
   border-radius: 8px;
 }
+
+body::-webkit-scrollbar-thumb:active {
+  background: rgb(140, 209, 37);
+}

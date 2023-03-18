@@ -10,6 +10,7 @@
    min-height: 100vh;
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
 }
 
 .pathContainer {
@@ -27,12 +28,13 @@
 
 /* Rick And Morty title */
 
-.imgDiv {
-   width: 15%;
-   padding: 8px;
+.navDiv {
+   display: flex;
+   justify-content: space-between;
+   padding-bottom: 16px;
 }
 
 .titleImg {
-   width: 100%;
-
+   padding: 8px;
+   width: 10%;
 }

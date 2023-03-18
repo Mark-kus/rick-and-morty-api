@@ -106,14 +106,14 @@ export default function App() {
 
   return (
     <div className='allContainer'>
-      <div className='imgDiv'>
+      <div className='navDiv'>
         <img className='titleImg' src={title} alt='Rick and Morty title' />
+        {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
       </div>
       <video id="background-video" loop autoPlay muted>
         <source src={video} type="video/mp4" />
       </video>
       <div className='App'>
-        {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
         <div className='pathContainer'>
           <Routes>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />

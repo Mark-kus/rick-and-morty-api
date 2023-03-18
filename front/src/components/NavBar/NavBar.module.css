@@ -1,22 +1,10 @@
 #navBar {
-    background: rgba(48, 30, 103, 0.8);
-    border: 2px solid rgba(54, 0, 204, 0.5);
-    border-radius: 8px;
-    height: 72vh;
-    position: sticky;
-    top: 2vh;
-    margin-right: 20px;
     display: flex;
-    flex-direction: column;
-    grid-column-start: 2;
-    min-width: 20%;
+    width: 40%;
 }
 
-#random img {
-    margin: 15px;
-}
-
-.navLinks, .active {
+.navLinks,
+.active {
     text-decoration: none;
     width: 100%;
     display: flex;
@@ -28,37 +16,29 @@
 }
 
 .links {
+    font-size: 2em;
     width: 100%;
     padding: 8px;
     background-color: rgba(9, 15, 41, 1);
     border: none;
-    color:white;
+    color: white;
     border-bottom: solid 2px rgba(0, 0, 0, 0.5);
     transition: background 300ms ease;
 
 }
 
 .linksHome {
-    border-top-left-radius: 8px;
     border-right: solid 2px rgb(41, 41, 41);
 }
 
 .linksFavorites {
     border-left: solid 2px rgb(41, 41, 41);
-    border-top-right-radius: 8px;
 }
 
 .links:hover {
-    background: rgb(78, 119, 16);
+    background: rgb(202, 202, 202);
 }
 
 .links:active {
     background: rgb(60, 92, 12);
-}
-
-.searchBar, .orderBar {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
