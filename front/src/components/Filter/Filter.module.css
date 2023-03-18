@@ -1,0 +1,11 @@
+#random img {
+    margin: 15px;
+}
+
+.searchBar,
+.orderBar {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
