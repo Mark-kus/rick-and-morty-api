@@ -1,6 +1,26 @@
-#navBar {
+.allNavbar {
     display: flex;
-    width: 40%;
+    justify-content: space-between;
+    width: 100%;
+    top: 0;
+    background-color: red;
+    z-index: 1;
+}
+
+.titleImg {
+    width: 10%;
+    margin: 8px;
+}
+
+.dependantBar {
+    background-color: green;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
 }
 
 .navLinks,
@@ -8,7 +28,6 @@
     text-decoration: none;
     width: 100%;
     display: flex;
-    justify-content: center;
 }
 
 .active .links {
@@ -16,22 +35,17 @@
 }
 
 .links {
-    font-size: 2em;
-    width: 100%;
+    font-size: 1.5em;
     padding: 8px;
     background-color: rgba(9, 15, 41, 1);
     border: none;
     color: white;
     border-bottom: solid 2px rgba(0, 0, 0, 0.5);
     transition: background 300ms ease;
-
 }
 
-.linksHome {
+.linksAbout {
     border-right: solid 2px rgb(41, 41, 41);
-}
-
-.linksFavorites {
     border-left: solid 2px rgb(41, 41, 41);
 }
 

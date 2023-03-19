@@ -4,7 +4,7 @@
     backdrop-filter: blur(40px);
     border-radius: 8px;
     padding: 16px;
-
+    width: 70vw;
     display: flex;
     align-items: center;
 }

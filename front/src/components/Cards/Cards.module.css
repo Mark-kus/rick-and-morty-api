@@ -1,6 +1,7 @@
 .cards {
-    min-height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-top: 32px;
     flex-wrap: wrap;
+    width: 80%;
 }

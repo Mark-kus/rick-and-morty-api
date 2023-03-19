@@ -1,7 +1,8 @@
 /* Containers */
 
 .App {
-   margin-bottom: 80px;
+   width: 100%;
+   position: relative;
    display: flex;
    justify-content: center;
 }
@@ -11,30 +12,19 @@
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+   align-items: center;
 }
 
 .pathContainer {
-   width: 70%;
+   display: flex;
+   justify-content: center;
 }
 
 /* Background video */
 
 #background-video {
    z-index: -100;
-   top: 0;
    width: 100%;
    position: fixed;
-}
-
-/* Rick And Morty title */
-
-.navDiv {
-   display: flex;
-   justify-content: space-between;
-   padding-bottom: 16px;
-}
-
-.titleImg {
-   padding: 8px;
-   width: 10%;
+   top: -12%;
 }

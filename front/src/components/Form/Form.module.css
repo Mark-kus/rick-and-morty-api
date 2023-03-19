@@ -1,13 +1,14 @@
 .container {
+    position: relative;
+    top: 24vh;
     display: flex;
     flex-direction: column;
-    max-width: 30%;
-    margin: auto;
     padding: 16px;
     background-color: rgba(11, 15, 13, 0.6);
     backdrop-filter: blur(40px);
     color: whitesmoke;
     border-radius: 8px;
+    width: 300px;
 }
 
 .container strong {

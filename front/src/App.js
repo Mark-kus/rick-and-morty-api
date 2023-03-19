@@ -8,7 +8,6 @@ import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form';
 import video from './backgroundDesktop.mp4';
-import title from './title.png';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFav, getFavs } from './redux/actions';
@@ -17,18 +16,20 @@ export default function App() {
   const [characters, setCharacters] = useState([]);
   const dispatch = useDispatch();
   const location = useLocation();
+  const path = location.pathname;
+  const routes = ['/home', '/about', '/', '/favorites']
   const myFavorites = useSelector(state => state.myFavorites)
   const charactersAmount = 826;
 
   // simulacion de seguridad
 
   const [access, setAccess] = useState(false);
-  const username = 'tignanellimarco@gmail.com';
-  const password = 'alphabeta';
+  const email = 'tignanellimarco@gmail.com';
+  const password = 'alphabeta03';
   const navigate = useNavigate();
 
   const login = (userData) => {
-    if (userData.password === password && userData.username === username) {
+    if (userData.password === password && userData.email === email) {
       setAccess(true);
       navigate('/home');
     }
@@ -37,12 +38,13 @@ export default function App() {
   useEffect(() => {
     access && navigate('/');
   }, [access]);
-  useEffect(() => {
-    dispatch(getFavs());
-  }, []);
 
   // !access para simular, access para no
   // fin de simulacion
+
+  useEffect(() => {
+    dispatch(getFavs());
+  }, []);
 
   const onSearch = ({ id }) => {
     if (characters.length === charactersAmount) {
@@ -106,13 +108,14 @@ export default function App() {
 
   return (
     <div className='allContainer'>
-      <div className='navDiv'>
-        <img className='titleImg' src={title} alt='Rick and Morty title' />
-        {location.pathname !== '/' ? <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} /> : ''}
-      </div>
-      <video id="background-video" loop autoPlay muted>
-        <source src={video} type="video/mp4" />
-      </video>
+      {routes.includes(path) || path.includes('/detail') ?
+        <video id="background-video" loop autoPlay muted>
+          <source src={video} type="video/mp4" />
+        </video>
+        : ''}
+      {path !== '/'  && routes.includes(path) || path.includes('/detail') ?
+        <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} />
+        : ''}
       <div className='App'>
         <div className='pathContainer'>
           <Routes>
