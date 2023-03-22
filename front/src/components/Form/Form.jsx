@@ -31,12 +31,12 @@ export default function Form(props) {
             <strong>Log In</strong>
 
             <label htmlFor="email">Email</label>
-            <input placeholder="you@example.com" autoComplete="on" id="email" value={userData.email} onChange={handleInputChange} type="text" name="email" />
+            <input placeholder="you@example.com" autoComplete="off" id="email" value={userData.email} onChange={handleInputChange} type="text" name="email" />
             <p className={styles.error}>{errors.email}</p>
             <br />
 
             <label htmlFor="password">Password</label>
-            <input placeholder="Enter 6 to 10 characters" autoComplete="on" id="password" value={userData.password} onChange={handleInputChange} type="password" name="password" />
+            <input placeholder="Enter 6 to 10 characters" autoComplete="off" id="password" value={userData.password} onChange={handleInputChange} type="password" name="password" />
             <p className={styles.error}>{errors.password}</p>
 
             <button type="submit">Enviar</button>

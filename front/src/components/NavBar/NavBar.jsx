@@ -1,13 +1,23 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styles from './NavBar.module.css';
-import SearchBar from "../SearchBar/SearchBar";
 import title from '../../title.png';
 import { useDispatch } from "react-redux";
 import { orderCards, filterCards } from '../../redux/actions.js'
+import { useState } from "react";
 
 export default function NavBar(props) {
+    const [character, setCharacter] = useState({
+        id: 0
+    });
     const location = useLocation();
     const dispatch = useDispatch();
+
+    const reCalc = (e) => {
+        const value = e.target.value;
+        setCharacter({
+            id: value
+        });
+    }
 
     const handleOrder = (e) => {
         dispatch(orderCards(e.target.value))
@@ -19,8 +29,22 @@ export default function NavBar(props) {
 
     return (
         <div className={styles.allNavbar}>
+            <div className={styles.navBar}>
+                <img className={styles.titleImg} src={title} alt='Rick and Morty title' />
 
-            <img className={styles.titleImg} src={title} alt='Rick and Morty title' />
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/home'>
+                    HOME
+                </NavLink>
+
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/about'>
+                    ABOUT
+                </NavLink>
+
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/favorites'>
+                    FAV
+                </NavLink>
+            </div>
+
             {location.pathname === '/favorites' ?
                 <div className={styles.dependantBar}>
                     <select name="order" onChange={handleOrder} >
@@ -37,27 +61,13 @@ export default function NavBar(props) {
                     </select>
                 </div>
                 : <div className={styles.dependantBar}>
-                    <SearchBar onSearch={props.onSearch} />
-                    <button id={styles.random} onClick={props.onSearchRandom}>🎲 Randomize</button>
+                        <form onSubmit={(e) => { e.preventDefault(); props.onSearch(character) }} className={styles.addForm}>
+                            <input type='search' name="id" onChange={reCalc} />
+                            <button type="submit">Add</button>
+                        </form>
+                            <button id={styles.random} onClick={props.onSearchRandom}>🎲 Randomize</button>
                 </div>}
 
-            <div className={styles.navBar}>
-
-                <div className={styles.navLinks}>
-                    <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/home'>
-                        <button className={`${styles.linksHome} ${styles.links}`}>HOME</button>
-                    </NavLink>
-
-                    <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/about'>
-                        <button className={`${styles.linksAbout} ${styles.links}`}>ABOUT</button>
-                    </NavLink>
-
-                    <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/favorites'>
-                        <button className={`${styles.linksFavorites} ${styles.links}`}>FAVORITES</button>
-                    </NavLink>
-                </div>
-
-            </div>
         </div>
     )
 }

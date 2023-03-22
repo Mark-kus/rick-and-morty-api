@@ -2,25 +2,40 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    top: 0;
-    background-color: red;
+    border-bottom: solid rgba(128, 128, 128, 0.3) 1px;
     z-index: 1;
+    background-color: rgb(6, 11, 29);
 }
 
 .titleImg {
-    width: 10%;
+    width: 30%;
     margin: 8px;
 }
 
+form input {
+    width: 100%;
+}
+/* cirque du zoleil sumanity member */
+
 .dependantBar {
-    background-color: green;
     display: flex;
     align-items: center;
+    width: 30%;
+    margin-right: 4%;
+    justify-content: space-evenly;
 }
 
-.navbar {
+.addForm {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 60%;
+}
+
+.navBar {
+    width: 25%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .navLinks,
@@ -28,31 +43,24 @@
     text-decoration: none;
     width: 100%;
     display: flex;
-}
-
-.active .links {
-    background: linear-gradient(180deg, rgba(9, 15, 41, 1), rgba(9, 15, 41, 0), rgba(9, 15, 41, 1));
-}
-
-.links {
-    font-size: 1.5em;
-    padding: 8px;
+    height: 100%;
     background-color: rgba(9, 15, 41, 1);
-    border: none;
-    color: white;
-    border-bottom: solid 2px rgba(0, 0, 0, 0.5);
+    border: solid rgba(128, 128, 128, 0.3) 1px;
+    color: whitesmoke;
     transition: background 300ms ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.linksAbout {
-    border-right: solid 2px rgb(41, 41, 41);
-    border-left: solid 2px rgb(41, 41, 41);
+.active {
+    background-color: rgb(20, 32, 85);
 }
 
-.links:hover {
-    background: rgb(202, 202, 202);
+.navLinks:hover {
+    background: rgb(20, 32, 85);
 }
 
-.links:active {
-    background: rgb(60, 92, 12);
+.navLinks:active {
+    background: rgb(11, 18, 48);
 }

@@ -113,7 +113,7 @@ export default function App() {
           <source src={video} type="video/mp4" />
         </video>
         : ''}
-      {path !== '/'  && routes.includes(path) || path.includes('/detail') ?
+      {path !== '/' && routes.includes(path) || path.includes('/detail') ?
         <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} />
         : ''}
       <div className='App'>
@@ -128,7 +128,9 @@ export default function App() {
           </Routes>
         </div>
       </div>
-      <Footer />
+      {path !== '/' && routes.includes(path) || path.includes('/detail') ?
+        <Footer />
+        : ''}
     </div>
   )
 }
