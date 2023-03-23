@@ -1,0 +1,15 @@
+.instrucciones { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+}
+
+.instrucciones span {
+    font-size: 1.3em;
+}
+
+.instrucciones img {
+    width: 50%;
+}
