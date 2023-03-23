@@ -9,7 +9,7 @@ const Favs = ({ characters }) => {
                 characters.length >= 1
                     ? <Cards characters={characters} />
                     : <div className={styles.instrucciones}>
-                        <span>Para agregar una carta a tu lista de favoritos, clickea en la estrella sobre ella</span>
+                        <span>To add a new favorite card, go to 'HOME' and click on the star above</span>
                         <img src={favExample} />
                     </div>
             }

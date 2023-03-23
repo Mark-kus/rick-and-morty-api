@@ -12,7 +12,7 @@ export default function Cards(props) {
                   character={element}
                   onClose={props.onClose}
                />
-            </div>) : 'No hay personajes guardados'}
+            </div>) : <span>Click 'Randomize' or insert an ID to start adding cards</span>}
       </div>
    )
 }
