@@ -1,4 +1,5 @@
-import styles from './About.module.css'
+import styles from './About.module.css';
+import myPhoto from '../../myPhoto.png';
 
 export default function About() {
     return (
@@ -7,11 +8,18 @@ export default function About() {
             <div className={styles.info}>
                 <h2>About me</h2>
                 <hr />
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum iure optio ullam, modi aliquid accusamus quidem? Laudantium quidem ullam quis qui dolore eligendi voluptate aspernatur, nam aut impedit, adipisci recusandae?
-                    Cumque sint ipsam officiis harum in suscipit fuga est minima soluta, officia mollitia quas reprehenderit, ullam nam sed. Nam veniam magnam odio et. Similique aliquid deserunt at error libero! Eius.
-                    Quibusdam ratione quis illo, voluptates laborum perferendis reprehenderit animi delectus aspernatur sit magnam illum ea voluptate quidem quaerat itaque dicta esse beatae necessitatibus eos, molestias mollitia. Dolore quidem saepe maxime.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum iure optio ullam, modi aliquid accusamus quidem? Laudantium quidem ullam quis qui dolore eligendi voluptate aspernatur, nam aut impedit, adipisci recusandae?
-                    Cumque sint ipsam officiis harum in suscipit fuga est minima soluta, officia mollitia quas reprehenderit, ullam nam sed. Nam veniam magnam odio et. Similique aliquid deserunt at error libero! Eius.
+                <p>
+                    The name's <span className={styles.important}>Tignanelli</span>, <span className={styles.important}>Marco Tignanelli</span>.
+                    <br />
+                    Sounded better in my mind, but it is indeed my name. I started studying web development by myself around 2020. You know, HTML, CSS,
+                    javascript, the core stuff. But with the beggining of 2023, I made it official by starting my journey on <span className={styles.important}>SoyHenry</span>, where "studying"
+                    got a whole new meaning, so now I get to do things I never thought I could.
+                </p>
+                <p>
+                    This web page is an example of that. Rised with React, routed with express and connected to sequelize, this
+                    <span className={styles.important}> Rick and Morty </span> themed project is the first step of my course,
+                    heading to get the opportunity to collaborate in the development of amazing apps and, who
+                    knows? Maybe with your team.
                 </p>
                 <div>
                     <a href="">Contact me</a>
@@ -19,7 +27,7 @@ export default function About() {
                 </div>
             </div>
 
-            <img src="https://i2-prod.irishmirror.ie/incoming/article3014722.ece/ALTERNATES/s1200c/Idris-Elba.jpg" alt="" />
+            <img src={myPhoto} alt="" />
 
         </div>
     )

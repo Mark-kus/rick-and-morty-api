@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.important {
+    color: greenyellow;
+}
+
 .container h2 {
     margin: 0;
 }
