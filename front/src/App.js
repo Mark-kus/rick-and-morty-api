@@ -37,7 +37,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    access && navigate('/');
+    !access && navigate('/');
   }, [access]);
 
   // !access para simular, access para no

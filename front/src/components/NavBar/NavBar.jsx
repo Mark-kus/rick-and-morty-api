@@ -62,7 +62,7 @@ export default function NavBar(props) {
                 </div>
                 : <div className={styles.dependantBar}>
                         <form onSubmit={(e) => { e.preventDefault(); props.onSearch(character) }} className={styles.addForm}>
-                            <input type='search' className={styles.searchInput} name="id" onChange={reCalc} />
+                            <input autoComplete="off" type='search' className={styles.searchInput} name="id" onChange={reCalc} />
                             <button className={styles.addButton} type="submit">Add</button>
                         </form>
                             <button className={styles.random} onClick={props.onSearchRandom}>🎲 Randomize</button>
