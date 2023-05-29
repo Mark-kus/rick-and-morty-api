@@ -1,5 +1,5 @@
 import Cards from "../Cards/Cards";
-import favExample from "../../favExample.png";
+import favExample from "../../assets/favExample.png";
 import styles from './Favs.module.css';
 
 const Favs = ({ characters }) => {

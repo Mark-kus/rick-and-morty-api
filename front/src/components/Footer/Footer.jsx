@@ -1,6 +1,6 @@
 import styles from './Footer.module.css';
-import liBlack from '../../linkedin-black.png'
-import liColor from '../../linkedin-color.png'
+import liBlack from '../../assets/linkedin-black.png'
+import liColor from '../../assets/linkedin-color.png'
 
 const Footer = () => {
     return (

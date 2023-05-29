@@ -8,7 +8,7 @@ import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form';
 import Favs from './components/Favs/Favs';
-import video from './backgroundDesktop.mp4';
+import video from './assets/backgroundDesktop.mp4';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFav, getFavs } from './redux/actions';
@@ -25,12 +25,10 @@ export default function App() {
   // simulacion de seguridad
 
   const [access, setAccess] = useState(false);
-  const email = 'tignanellimarco@gmail.com';
-  const password = 'alphabeta03';
   const navigate = useNavigate();
 
   const login = (userData) => {
-    if (userData.password === password && userData.email === email) {
+    if (userData.password.length && userData.email.length) {
       setAccess(true);
       navigate('/home');
     }

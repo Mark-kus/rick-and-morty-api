@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styles from './NavBar.module.css';
-import title from '../../title.png';
+import title from '../../assets/title.png';
 import { useDispatch } from "react-redux";
 import { orderCards, filterCards } from '../../redux/actions.js'
 import { useState } from "react";
