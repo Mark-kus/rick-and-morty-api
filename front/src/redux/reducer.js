@@ -29,6 +29,7 @@ const reducer = (state = initialState, action) => {
             }
 
         case ORDER:
+            console.log(action.payload);
             let order = [...state.myFavorites]
             if (action.payload === 'Ascendente') {
                 order.sort((a, b) => a.name.localeCompare(b.name))
@@ -48,7 +49,7 @@ const reducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                myFavorites: state.allCharacters.filter(el => el.gender === action.payload)
+                myFavorites: [...state.allCharacters.filter(el => el.gender === action.payload)]
             }
 
         default:

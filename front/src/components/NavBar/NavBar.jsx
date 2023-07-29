@@ -32,7 +32,7 @@ export default function NavBar(props) {
             <div className={styles.navBar}>
                 <img className={styles.titleImg} src={title} alt='Rick and Morty title' />
 
-                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/home'>
+                <NavLink className={({ isActive }) => isActive ? styles.active : styles.navLinks} to='/'>
                     HOME
                 </NavLink>
 
@@ -62,7 +62,7 @@ export default function NavBar(props) {
                 </div>
                 : <div className={styles.dependantBar}>
                         <form onSubmit={(e) => { e.preventDefault(); props.onSearch(character) }} className={styles.addForm}>
-                            <input autoComplete="off" type='search' className={styles.searchInput} name="id" onChange={reCalc} />
+                            <input placeholder="Inserta un id" autoComplete="off" type='search' className={styles.searchInput} name="id" onChange={reCalc} />
                             <button className={styles.addButton} type="submit">Add</button>
                         </form>
                             <button className={styles.random} onClick={props.onSearchRandom}>🎲 Randomize</button>

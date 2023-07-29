@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from './Detail.module.css';
 
-export default function Detail(props) {
-    const { characters, onSearch } = props;
+export default function Detail({ characters }) {
     const { id } = useParams();
     const [first, setFirst] = useState();
-    const [character] = characters.filter((elem) => elem.id === id);
+    const character = characters.find((elem) => Number(elem.id) === Number(id));
+    console.log(character.episode);
     let goFetch = character.episode[0];
-    goFetch = goFetch.replace('https://be-a-rym.up.railway.app/api/episode/', '');
+    goFetch = goFetch.replace('https://rickandmortyapi.com/api/episode/', '');
 
     useEffect(() => {
         fetch(`http://localhost:3001/detail/${goFetch}`)
@@ -22,7 +22,7 @@ export default function Detail(props) {
 
     return (
         <div className={styles.container}>
-            <Link to='/home'><button className={styles.backButton} >&#5130;</button></Link>
+            <Link to='/'><button className={styles.backButton} >&#5130;</button></Link>
             <div className={styles.dataContainer}>
                 <div className={styles.data}>
                     <span>Name: {character.name}</span>

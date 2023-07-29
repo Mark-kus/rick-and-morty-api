@@ -22,8 +22,7 @@ export default function About() {
                     knows? Maybe with your team.
                 </p>
                 <div>
-                    <a href="">Contact me</a>
-                    <a href="">Know more</a>
+                    <a href="https://mark-kus.vercel.app/" rel='noreferrer' target='_blank'>Know more</a>
                 </div>
             </div>
 

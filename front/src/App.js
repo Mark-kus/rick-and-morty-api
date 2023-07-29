@@ -6,10 +6,9 @@ import Footer from './components/Footer/Footer.jsx'
 import About from './components/About/About.jsx'
 import Error from './components/Error/Error.jsx'
 import Detail from './components/Detail/Detail.jsx'
-import Form from './components/Form/Form';
 import Favs from './components/Favs/Favs';
 import video from './assets/backgroundDesktop.mp4';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFav, getFavs } from './redux/actions';
 
@@ -21,25 +20,6 @@ export default function App() {
   const routes = ['/home', '/about', '/', '/favorites']
   const myFavorites = useSelector(state => state.myFavorites)
   const charactersAmount = 826;
-
-  // simulacion de seguridad
-
-  const [access, setAccess] = useState(false);
-  const navigate = useNavigate();
-
-  const login = (userData) => {
-    if (userData.password.length && userData.email.length) {
-      setAccess(true);
-      navigate('/home');
-    }
-  }
-
-  useEffect(() => {
-    !access && navigate('/');
-  }, [access]);
-
-  // !access para simular, access para no
-  // fin de simulacion
 
   useEffect(() => {
     dispatch(getFavs());
@@ -112,22 +92,21 @@ export default function App() {
           <source src={video} type="video/mp4" />
         </video>
         : ''}
-      {path !== '/' && routes.includes(path) || path.includes('/detail') ?
+      {routes.includes(path) || path.includes('/detail') ?
         <NavBar onSearch={onSearch} onSearchRandom={onSearchRandom} />
         : ''}
       <div className='App'>
         <div className='pathContainer'>
           <Routes>
-            <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+            <Route path='/' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
             <Route path='/favorites' element={<Favs characters={myFavorites} />} />
-            <Route path='/detail/:id' element={<Detail characters={characters} />} />
-            <Route exact path='/' element={<Form login={login} />} />
+            <Route path='/detail/:id' element={<Detail characters={[...characters]} />} />
             <Route path='*' element={<Error />} />
           </Routes>
         </div>
       </div>
-      {path !== '/' && routes.includes(path) || path.includes('/detail') ?
+      {routes.includes(path) || path.includes('/detail') ?
         <Footer />
         : ''}
     </div>

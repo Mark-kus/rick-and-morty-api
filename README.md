@@ -1,19 +1,10 @@
 # Rick and Morty
 
-This project was made by Mark-kus for the bootcamp SoyHenry.
+For running this project you should have Node.JS in your computer.
 
-In the project directory, you can run:
+# **Rise the website**
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-Make sure you have installed all the dependencies, for back and front end.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### ALERT
-
-This project is no longer being updated, and due to the API used in it being taked down, the backend is no longer workin.
-Yet, I invite anyone to fork it and give it a try. :p
+1. Clone the repository.
+2. Execute `npm i` and `npm start` on a terminal inside rick-and-morty-api/back.
+3. Open another terminal, then run `npm i` and `npm start` inside rick-and-morty-api/front.
+4. Done! When the command finishes, it will open a tab on your browser with the project running.
