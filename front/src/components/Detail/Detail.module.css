@@ -1,40 +1,46 @@
 .container {
-    backdrop-filter: blur(24px);
-    color: whitesmoke;
-    border-radius: 10px;
-    width: 800px;
-    box-shadow: 0 0 8px rgb(255, 255, 255);
-}
-
-.dataContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--diff-main);
+  color: var(--diff-text);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .backButton {
-    border-top-left-radius: 7px;
-    background-color: transparent;
-    color: whitesmoke;
-    position: absolute;
+  background-color: var(--main);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
 }
 
 .backButton:hover {
-    cursor: pointer;
+  opacity: 0.9;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 
 .data {
-    width: 60%;
-    margin: 10px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 10px;
-    border: solid 1px gray;
-    border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
 }
 
 .image {
-    border-radius: 8px;
-    margin: 4px;
-    width: 300px;
+  border-radius: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
 }

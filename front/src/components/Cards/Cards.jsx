@@ -2,7 +2,7 @@ import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
 export default function Cards(props) {
-   let { characters } = props;
+   const { characters } = props;
 
    return (
       <div className={styles.cards}>

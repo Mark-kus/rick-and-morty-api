@@ -1,20 +1,12 @@
 import Cards from "../Cards/Cards";
-import favExample from "../../assets/favExample.png";
-import styles from './Favs.module.css';
+
+import styles from "./Favs.module.css";
 
 const Favs = ({ characters }) => {
-    return (
-        <>
-            {
-                characters.length >= 1
-                    ? <Cards characters={characters} />
-                    : <div className={styles.instrucciones}>
-                        <span>To add a new favorite card, go to 'HOME' and click on the star above</span>
-                        <img src={favExample} alt="Visual example for adding a character to favorites" />
-                    </div>
-            }
-        </>
-    )
-}
+  if (characters.length === 0) {
+    return <h1 className={styles.noFavsText}>No hay personajes favoritos</h1>;
+  }
+  return <Cards characters={characters} />;
+};
 
 export default Favs;

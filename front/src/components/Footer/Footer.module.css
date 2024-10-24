@@ -3,46 +3,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-top: solid rgba(128, 128, 128, 0.15) 1px;
-    background-color: black;
+    background-color: var(--diff-main);
+    border-top: solid rgba(128, 128, 128, 0.2) 1px;
     padding: 24px 0;
-}
-
-.footer span {
-    padding-right: 8px;
-}
-
-/* LinkedIn styles */
-
-.liAnchor {
-    display: flex;
-}
-
-.liBlack {
-    background-color: white;
-    width: 20px;
-    border: 1px solid white;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: opacity .30s ease;
-}
-
-.liColor {
-    width: 20px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity .30s ease;
-    position: relative;
-    right: 20px;
-}
-
-/* LinkedIn animation */
-
-.liAnchor:hover .liColor {
-    opacity: 1;
-}
-
-.liAnchor:hover .liBlack {
-    opacity: 0;
+    color: var(--diff-text); /* White text for better readability */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    font-size: 14px; /* Slightly larger font size */
 }

@@ -1,18 +1,3 @@
-.instrucciones { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    width: 100%;
-    height: 75vh;
-}
-
-.instrucciones span {
-    font-size: 1.4em;
-    margin-bottom: 24px;
-}
-
-.instrucciones img {
-    width: 40%;
+.noFavsText {
+    color: var(--text);
 }

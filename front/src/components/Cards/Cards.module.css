@@ -9,8 +9,6 @@
 .cards span {
     text-align: center;
     font-size: 1.3em;
-    color: black;
-    background-color: rgba(172, 255, 47, 0.3);
-    backdrop-filter: blur(24px);
+    color: var(--text);
     padding: 16px;
 }

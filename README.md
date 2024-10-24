@@ -1,10 +1,17 @@
 # Rick and Morty
+To run this project, ensure you have Node.js installed on your computer.
 
-For running this project you should have Node.JS in your computer.
-
-# **Rise the website**
+# **Start the Website**
 
 1. Clone the repository.
-2. Execute `npm i` and `npm start` on a terminal inside rick-and-morty-api/back.
-3. Open another terminal, then run `npm i` and `npm start` inside rick-and-morty-api/front.
-4. Done! When the command finishes, it will open a tab on your browser with the project running.
+2. In a terminal, navigate to `rick-and-morty-api/back` and run:
+    ```sh
+    npm i
+    npm start
+    ```
+3. Open another terminal, navigate to `rick-and-morty-api/front`, and run:
+    ```sh
+    npm i
+    npm start
+    ```
+4. Done! Once the commands finish, a new tab will open in your browser with the project running.

@@ -3,16 +3,17 @@
 .card {
     width: 200px;
     margin: 0 32px 24px 0;
-    background-color: rgba(0, 110, 114, 0);
+    background-color: var(--diff-main);
     border-radius: 10px;
-    transition: transform 150ms ease-in-out;
-    box-shadow: 0 0 8px rgb(255, 255, 255);
+    transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
+    box-shadow: 0 0 8px white;
     display: flex;
     flex-direction: column;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: scale(1.01);
+    box-shadow: 0 0 16px white;
 }
 
 /* Button styles */
@@ -21,20 +22,27 @@
     font-size: 0%;
     position: absolute;
     visibility: hidden;
-    color: whitesmoke;
-    background-color: rgba(255, 0, 0, 0);
+    color: white;
+    background-color: transparent;
     border: none;
     border-radius: 50%;
     width: 0%;
     height: 0%;
     margin: 4px;
+
+    transition: color 100ms ease-in-out;
 }
 
-/* .closeBut {
-} */
+.closeBut:hover {
+    color: red;
+}
 
 .favBut {
     align-self: flex-end;
+}
+
+.favBut:hover {
+    color: yellow;
 }
 
 .card:hover .button {
@@ -66,7 +74,6 @@
     align-items: center;
     background-color: white;
     border-radius: 8px;
-    color: mediumvioletred;
     height: 30%;
     text-align: center;
 }
@@ -80,6 +87,5 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    color: black;
     bottom: 5px;
 }

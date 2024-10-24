@@ -1,16 +1,22 @@
 .container {
-    background: rgba(0, 0, 0, 0.5);
-    border: white solid 1px;
-    backdrop-filter: blur(40px);
+    color: var(--soft-white);
+    background-color: var(--diff-main);
+    opacity: 0.9;
+    border: var(--diff-text) solid 1px;
     border-radius: 8px;
     padding: 16px;
-    width: 70vw;
+    width: 50vw;
     display: flex;
     align-items: center;
 }
 
+.container hr {
+    width: 100%;
+    border: var(--diff-text) solid 1px;
+}
+
 .important {
-    color: greenyellow;
+    color: var(--main);
 }
 
 .container h2 {
@@ -18,16 +24,17 @@
 }
 
 .container a {
-    background-color: rgb(57, 153, 81);
+    border: solid var(--main) 2px;
+    color: var(--diff-text);
     text-decoration: none;
-    color: whitesmoke;
     padding: 8px;
     margin-right: 8px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.info {
-    width: 60%;
-    margin-right: 8px;
+.container a:hover {
+    color: var(--text);
+    background-color: var(--main);
 }
 
 .container img {

@@ -1,95 +1,132 @@
 .allNavbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: solid rgba(128, 128, 128, 0.3) 1px;
-    z-index: 1;
-    background-color: rgb(6, 11, 29);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 1;
+  background-color: var(--diff-main);
+  height: 50px;
 }
 
 .titleImg {
-    width: 30%;
-    margin: 8px;
+  width: 30%;
+  margin: 8px;
 }
 
 .searchInput {
-    width: 100%;
+  width: 100%;
+
+  padding: 8px;
+  border: 2px solid var(--main);
+  border-radius: 4px;
+  font-size: 16px;
+  color: var(--main);
+  background-color: whitesmoke;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: var(--diff-main);
+    outline: none;
+  }
 }
 
-/* cirque du zoleil sumanity member */
-
 .dependantBar {
-    display: flex;
-    align-items: center;
-    width: 30%;
-    margin-right: 4%;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  margin-right: 4%;
+  justify-content: space-evenly;
 }
 
 .dependantBar select {
-    color: whitesmoke;
-    border: solid whitesmoke 1px;
-    background-color: rgb(18, 33, 87);
-    border-radius: 4px;
+  padding: 8px;
+  border: 2px solid var(--main);
+  border-radius: 4px;
+  font-size: 16px;
+  color: var(--main);
+  background-color: whitesmoke;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: var(--diff-main);
+    outline: none;
+  }
 }
 
 .random {
+  background-color: var(--main);
+  color: whitesmoke;
+  border: solid whitesmoke 1px;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
     background-color: rgb(18, 33, 87);
-    color: whitesmoke;
-    border: solid whitesmoke 1px;
-    border-radius: 4px;
+    transform: scale(0.95);
+  }
 }
 
 .addButton {
+  background-color: var(--main);
+  color: whitesmoke;
+  border: solid whitesmoke 1px;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
     background-color: rgb(18, 33, 87);
-    color: whitesmoke;
-    border: solid whitesmoke 1px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-left: none;
+    transform: scale(0.95);
+  }
 }
 
 .random:active,
 .addButton:active {
-    background-color: rgb(30, 56, 150);
+  opacity: 0.9;
 }
 
 .addForm {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 60%;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 60%;
 }
 
 .navBar {
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navLinks,
 .active {
-    text-decoration: none;
-    width: 100%;
-    display: flex;
-    height: 100%;
-    background-color: rgba(9, 15, 41, 1);
-    border: solid rgba(128, 128, 128, 0.3) 1px;
-    color: whitesmoke;
-    transition: background 300ms ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  background-color: var(--main);
+  border: solid rgba(128, 128, 128, 0.3) 1px;
+  color: whitesmoke;
+  transition: background 300ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.navLinks:hover,
+.navLinks:active,
 .active {
-    background-color: rgb(20, 32, 85);
-}
-
-.navLinks:hover {
-    background: rgb(20, 32, 85);
-}
-
-.navLinks:active {
-    background: rgb(11, 18, 48);
+  opacity: 0.9;
 }
