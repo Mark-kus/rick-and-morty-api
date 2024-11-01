@@ -2,7 +2,6 @@ require("dotenv").config();
 const router = require("./routes/index.js");
 const express = require("express");
 const app = express();
-const PORT = 3001;
 const path = require("path");
 
 app.use(express.json());
@@ -26,6 +25,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../", "front/build", "index.html"));
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server raised in port " + PORT);
 });
