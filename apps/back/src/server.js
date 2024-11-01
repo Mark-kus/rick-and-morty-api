@@ -1,14 +1,31 @@
-require('dotenv').config();
-const router = require('./routes/index.js');
-const express = require('express');
-const app = express()
+require("dotenv").config();
+const router = require("./routes/index.js");
+const express = require("express");
+const app = express();
 const PORT = 3001;
-const cors = require('cors');
+const path = require("path");
 
-app.use(cors())
-app.use(express.json())
-app.use('/', router);
+app.use(express.json());
+app.use((req, res, next) => {
+  // Esto debe ser reemplazado por * para el deploy
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+
+app.use("/api", router);
+app.use(express.static(path.join(__dirname, "../../", "front/build")));
+
+// Para que sirva la build al recargar una ruta
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../", "front/build", "index.html"));
+});
 
 app.listen(PORT, () => {
-    console.log('Server raised in port ' + PORT);
-})
+  console.log("Server raised in port " + PORT);
+});

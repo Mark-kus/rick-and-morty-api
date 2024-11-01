@@ -4,8 +4,9 @@
   "description": "A Single Page Application using React, Redux, Node, Express, and Sequelize to interact with the Rick and Morty API.",
   "main": "index.js",
   "scripts": {
-    "start": "npm start --workspace=back",
-    "build": "npm run build --workspace=front"
+    "start": "npm i --prefix apps/back && npm start --prefix apps/back",
+    "build": "npm i --prefix apps/front && npm run build --prefix apps/front",
+    "full": "npm run build && npm start"
   },
   "eslintConfig": {
     "extends": [
@@ -16,8 +17,5 @@
   "keywords": ["rick", "morty", "api", "react", "redux"],
   "author": "",
   "license": "ISC",
-  "private": true,
-  "workspaces": [
-    "apps/*"
-  ]
+  "private": true
 }

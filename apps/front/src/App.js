@@ -10,6 +10,7 @@ import Favs from "./components/Favs/Favs";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { deleteFav, getFavs } from "./redux/actions";
 import { useAppDispatch, useAppSelector } from "./redux/redux.js";
+import axiosInstance from "./redux/axios.js";
 
 export default function App() {
   const [characters, setCharacters] = useState([]);
@@ -32,30 +33,34 @@ export default function App() {
       alert("No hay más cartas que añadir");
       return null;
     }
-    fetch(`http://localhost:3001/onsearch/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.name) {
-          let repeated = false;
-          if (characters.length > 0) {
-            characters.forEach((elem) => {
-              if (elem.id === data.id) {
-                alert("Esa carta ya existe");
-                repeated = true;
-              }
-            });
+    axiosInstance.get(`/onsearch/${id}`)
+      .then((response) => {
+      const data = response.data;
+      if (data.name) {
+        let repeated = false;
+        if (characters.length > 0) {
+        characters.forEach((elem) => {
+          if (elem.id === data.id) {
+          alert("Esa carta ya existe");
+          repeated = true;
           }
-          if (!repeated) {
-            if (characters.length > 0) {
-              setCharacters([...characters, data]);
-            } else {
-              setCharacters([data]);
-            }
-          }
-          setSearching(false);
-        } else {
-          onSearchRandom();
+        });
         }
+        if (!repeated) {
+        if (characters.length > 0) {
+          setCharacters([...characters, data]);
+        } else {
+          setCharacters([data]);
+        }
+        }
+        setSearching(false);
+      } else {
+        onSearchRandom();
+      }
+      })
+      .catch((error) => {
+      console.error("Error fetching character:", error);
+      setSearching(false);
       });
   };
 
