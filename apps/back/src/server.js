@@ -26,5 +26,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3001, () => {
-  console.log("Server raised in port " + PORT);
+  console.log("Server raised in port " + process.env.PORT || 3001);
 });
