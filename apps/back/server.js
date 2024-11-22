@@ -18,11 +18,11 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", router);
-app.use(express.static(path.join(__dirname, "../../", "front/dist")));
+app.use(express.static(path.join(__dirname, "../", "front/dist")));
 
 // Para que sirva la build al recargar una ruta
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../", "front/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../", "front/dist", "index.html"));
 });
 
 app.listen(process.env.PORT || 3001, () => {
