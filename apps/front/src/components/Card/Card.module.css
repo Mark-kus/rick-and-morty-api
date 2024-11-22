@@ -2,7 +2,6 @@
 
 .card {
     width: 200px;
-    margin: 0 32px 24px 0;
     background-color: var(--diff-main);
     border-radius: 10px;
     transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;

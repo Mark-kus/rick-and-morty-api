@@ -8,6 +8,13 @@
     width: 50vw;
     display: flex;
     align-items: center;
+    height: 90%;
+    margin-top: 40px;
+
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+    }
+
 }
 
 .container hr {
@@ -16,7 +23,7 @@
 }
 
 .important {
-    color: var(--main);
+    color: rgb(0, 19, 82);
 }
 
 .container h2 {
@@ -28,15 +35,10 @@
     color: var(--diff-text);
     text-decoration: none;
     padding: 8px;
-    margin-right: 8px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .container a:hover {
     color: var(--text);
     background-color: var(--main);
-}
-
-.container img {
-    width: 40%;
 }

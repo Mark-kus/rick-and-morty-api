@@ -1,10 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 20px;
   background-color: var(--diff-main);
-  color: var(--diff-text);
+  color: var(--text);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -16,8 +15,8 @@
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 20px;
   transition: background-color 0.3s ease;
+  color: var(--text);
 }
 
 .backButton:hover {
@@ -25,22 +24,40 @@
 }
 
 .dataContainer {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .data {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   font-size: 18px;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: var(--main);
+
+  width: 200px;
+  height: 200px;
+
+  box-sizing: border-box;
 }
 
 .image {
   border-radius: 10px;
-  max-width: 200px;
-  max-height: 200px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+  border: 3px solid var(--main);
+  box-sizing: border-box;
 }

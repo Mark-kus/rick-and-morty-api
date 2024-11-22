@@ -23,8 +23,8 @@ export default function Detail({ characters }) {
 
   return (
     <div className={styles.container}>
-      <Link to="/">
-        <button className={styles.backButton}>X</button>
+      <Link className={styles.navlink} to="/">
+        <button className={styles.backButton}>&lt; Back to home</button>
       </Link>
       <div className={styles.dataContainer}>
         <div className={styles.data}>
@@ -32,11 +32,17 @@ export default function Detail({ characters }) {
           <span>Species: {character.species}</span>
           <span>Gender: {character.gender}</span>
           <span>Status: {character.status}</span>
-          <span>Origin: {character.origin.name}</span>
-          {first ? <span>First encounter: "{first.name}"</span> : ""}
+          {character.origin.name && (
+            <span>Origin: {character.origin.name}</span>
+          )}
+          {first && <span>First encounter: "{first.name}"</span>}
         </div>
         <div>
-          <img className={styles.image} src={character.image} alt={character.name} />
+          <img
+            className={styles.image}
+            src={character.image}
+            alt={character.name}
+          />
         </div>
       </div>
     </div>

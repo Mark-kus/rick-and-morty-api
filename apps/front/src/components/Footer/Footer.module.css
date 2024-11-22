@@ -9,4 +9,5 @@
     color: var(--diff-text); /* White text for better readability */
     font-family: 'Arial', sans-serif; /* Clean and modern font */
     font-size: 14px; /* Slightly larger font size */
+    margin-top: 32px; /* Spacing from the cards */
 }

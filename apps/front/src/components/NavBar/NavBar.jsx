@@ -1,15 +1,18 @@
 import { NavLink, useLocation } from "react-router-dom";
-import styles from "./NavBar.module.css";
-import { orderCards, filterCards } from "../../redux/actions.js";
-import { useAppDispatch } from "../../redux/redux.js";
 import { useState } from "react";
 
-export default function NavBar(props) {
-  const [character, setCharacter] = useState({
-    id: 0,
-  });
+import { orderCards, filterCards } from "../../redux/actions.js";
+import { useAppDispatch } from "../../redux/redux.js";
+
+import styles from "./NavBar.module.css";
+
+const DependantBar = ({ onSearch, onSearchRandom, searching }) => {
   const location = useLocation();
   const dispatch = useAppDispatch();
+
+  const [character, setCharacter] = useState({
+    id: null,
+  });
 
   const reCalc = (e) => {
     const value = e.target.value;
@@ -26,6 +29,65 @@ export default function NavBar(props) {
     dispatch(filterCards(e.target.value));
   };
 
+  if (location.pathname === "/about") {
+    return null;
+  }
+
+  if (location.pathname === "/favorites") {
+    return (
+      <div className={styles.favoritesDependantBar}>
+        <select name="order" onChange={handleOrder}>
+          <option value="Ascendente">Ascendente</option>
+          <option value="Descendente">Descendente</option>
+        </select>
+
+        <select name="filter" onChange={handleFilter}>
+          <option value="none">No filter</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Genderless">Genderless</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.searchDependantBar}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearch(character);
+          e.target.reset();
+          setCharacter({ id: null });
+        }}
+        className={styles.addForm}
+      >
+        <input
+          placeholder="123"
+          autoComplete="off"
+          type="search"
+          className={styles.searchInput}
+          name="id"
+          onChange={reCalc}
+          value={character.id}
+        />
+        <button disabled={searching} className={styles.addButton} type="submit">
+          Add
+        </button>
+      </form>
+      <button
+        disabled={searching}
+        className={styles.random}
+        onClick={onSearchRandom}
+      >
+        🎲 <span className={styles.randomText}>Randomize</span>
+      </button>
+    </div>
+  );
+};
+
+export default function NavBar(props) {
   return (
     <div className={styles.allNavbar}>
       <div className={styles.navBar}>
@@ -49,7 +111,7 @@ export default function NavBar(props) {
 
         <NavLink
           className={({ isActive }) =>
-            isActive ? styles.active : styles.navLinks
+            isActive ? `${styles.active} ${styles.notMobile}` : `${styles.navLinks} ${styles.notMobile}`
           }
           to="/favorites"
         >
@@ -57,56 +119,12 @@ export default function NavBar(props) {
         </NavLink>
       </div>
 
-      {location.pathname === "/favorites" ? (
-        <div className={styles.dependantBar}>
-          <select name="order" onChange={handleOrder}>
-            <option value="Ascendente">Ascendente</option>
-            <option value="Descendente">Descendente</option>
-          </select>
+      <DependantBar
+        onSearch={props.onSearch}
+        onSearchRandom={props.onSearchRandom}
+        searching={props.searching}
+      />
 
-          <select name="filter" onChange={handleFilter}>
-            <option value="none">No filter</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Genderless">Genderless</option>
-            <option value="unknown">Unknown</option>
-          </select>
-        </div>
-      ) : (
-        <div className={styles.dependantBar}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              props.onSearch(character);
-              e.target.reset();
-            }}
-            className={styles.addForm}
-          >
-            <input
-              placeholder="Inserta un id"
-              autoComplete="off"
-              type="search"
-              className={styles.searchInput}
-              name="id"
-              onChange={reCalc}
-            />
-            <button
-              disabled={props.searching}
-              className={styles.addButton}
-              type="submit"
-            >
-              Add
-            </button>
-          </form>
-          <button
-            disabled={props.searching}
-            className={styles.random}
-            onClick={props.onSearchRandom}
-          >
-            🎲 Randomize
-          </button>
-        </div>
-      )}
     </div>
   );
 }

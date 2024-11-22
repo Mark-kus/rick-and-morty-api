@@ -1,5 +1,5 @@
 require("dotenv").config();
-const router = require("./routes/index.js");
+const router = require("./src/routes/index.js");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -18,13 +18,13 @@ app.use((req, res, next) => {
 });
 
 app.use("/api", router);
-app.use(express.static(path.join(__dirname, "../../", "front/build")));
+app.use(express.static(path.join(__dirname, "../../", "front/dist")));
 
 // Para que sirva la build al recargar una ruta
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../", "front/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../../", "front/dist", "index.html"));
 });
 
 app.listen(process.env.PORT || 3001, () => {
-  console.log("Server raised in port " + process.env.PORT || 3001);
+  console.log("Server raised in port " + (process.env.PORT || 3001));
 });

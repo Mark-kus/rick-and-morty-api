@@ -1,15 +1,18 @@
 .allNavbar {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% - 17px);
   z-index: 1;
   background-color: var(--diff-main);
   height: 50px;
-}
 
-.titleImg {
-  width: 30%;
-  margin: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .searchInput {
@@ -29,15 +32,20 @@
   }
 }
 
-.dependantBar {
+.searchDependantBar,
+.favoritesDependantBar {
   display: flex;
   align-items: center;
-  width: 30%;
-  margin-right: 4%;
   justify-content: space-evenly;
 }
 
-.dependantBar select {
+.favoritesDependantBar {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.favoritesDependantBar select {
   padding: 8px;
   border: 2px solid var(--main);
   border-radius: 4px;
@@ -45,6 +53,7 @@
   color: var(--main);
   background-color: whitesmoke;
   transition: border-color 0.3s ease;
+  margin-right: 8px;
 
   &:focus {
     border-color: var(--diff-main);
@@ -52,23 +61,9 @@
   }
 }
 
-.random {
-  background-color: var(--main);
-  color: whitesmoke;
-  border: solid whitesmoke 1px;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    opacity: 0.9;
-  }
-
-  &:active {
-    background-color: rgb(18, 33, 87);
-    transform: scale(0.95);
+.randomText, .notMobile {
+  @media screen and (max-width: 768px) {
+    display: none !important;
   }
 }
 
@@ -100,18 +95,31 @@
 .addForm {
   display: flex;
   flex-wrap: nowrap;
-  width: 60%;
+  width: 100%;
+
+  max-width: 200px;
+  margin-right: 8px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
 }
 
 .navBar {
-  width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex: 1;
+
+  @media screen and (min-width: 768px) {
+    max-width: 300px;
+  }
 }
 
 .navLinks,
-.active {
+.active,
+.random {
   text-decoration: none;
   width: 100%;
   display: flex;
@@ -119,14 +127,20 @@
   background-color: var(--main);
   border: solid rgba(128, 128, 128, 0.3) 1px;
   color: whitesmoke;
-  transition: background 300ms ease;
+  transition: background-color 300ms ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 80px;
+  cursor: pointer;
 }
 
 .navLinks:hover,
 .navLinks:active,
 .active {
+  opacity: 0.9;
+}
+
+.random:active {
   opacity: 0.9;
 }

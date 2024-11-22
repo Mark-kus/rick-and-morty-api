@@ -3,6 +3,8 @@
   --diff-main: #23BCC2;
   --text: #FFF;
   --diff-text: #000;
+
+  --navbar-space: 70px;
 }
 
 body {
